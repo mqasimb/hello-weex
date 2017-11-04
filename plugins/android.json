@@ -1,0 +1,24 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "nat-camera": {
+            "PACKAGE_NAME": "com.alibaba.weex"
+        },
+        "nat-device-info": {
+            "PACKAGE_NAME": "com.alibaba.weex"
+        },
+        "nat-device-screen": {
+            "PACKAGE_NAME": "com.alibaba.weex"
+        },
+        "nat-geolocation": {
+            "PACKAGE_NAME": "com.alibaba.weex"
+        }
+    },
+    "dependent_plugins": {}
+}

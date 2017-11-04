@@ -1,3 +1,25 @@
-node_modules
 *.log
-platforms
+.idea/
+*.iml
+.DS_Store
+
+# Created by Builder
+coverage
+dist
+
+# Node
+logs
+*.log
+npm-debug.log*
+node_modules
+.npm
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Android
+
+platforms/android
+docs
