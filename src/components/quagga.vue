@@ -45,18 +45,14 @@ import Quagga from 'quagga'
                         "ean_8_reader",
                         "upc_reader",
                         "upc_e_reader"]
-        },
-        debug: {
-          drawBoundingBox: true,
-          showFrequency: true,
-          drawScanline: true,
-          showPattern: true
         }
       },  function(err) {
             if (err) {
               this.error = err
                 return console.log(err);
             }
+            //remove canvas for now, not built into week for mobile
+            document.querySelectorAll('canvas').forEach((elm) => elm.remove())
             Quagga.start();
           });
       Quagga.onDetected((res)=> {
