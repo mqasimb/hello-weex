@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="quagga-wrapper">
     <text>Barcode Scanner - ean & upc</text>
     <text v-if="results.length > 2">Barcode: {{ results[results.length-1].code }} Format: {{ results[results.length-1].format }}</text>
     <text v-if="error.length > 0">Errors: {{ error }}</text>
@@ -12,7 +12,7 @@
 </style>
 
 <script>
-import Quagga from 'quagga'
+var Quagga = require('quagga')
   export default {
     data: function() {
       return {
@@ -51,8 +51,8 @@ import Quagga from 'quagga'
               this.error = err
                 return console.log(err);
             }
-            //remove canvas for now, not built into week for mobile
-            document.querySelectorAll('canvas').forEach((elm) => elm.remove())
+            //remove canvas for now, not built into weex for mobile
+            document.getElementById('quagga-wrapper').querySelectorAll('canvas').forEach((elm) => elm.remove())
             Quagga.start();
           });
       Quagga.onDetected((res)=> {

@@ -12,7 +12,7 @@
 
 <script>
 // import Nat from 'natjs'
-import Quagga from './components/quagga.vue'
+var Quagga = require('../components/quagga.vue')
   export default {
     components: {
       'quagga': Quagga
