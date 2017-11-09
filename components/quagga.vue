@@ -3,7 +3,7 @@
     <text>Barcode Scanner - ean & upc</text>
     <text v-if="results.length > 2">Barcode: {{ results[results.length-1].code }} Format: {{ results[results.length-1].format }}</text>
     <text v-if="error.length > 0">Errors: {{ error }}</text>
-    <div id="videoElement"></div>
+    <div id="interactive" class="viewport"></div>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ var Quagga = require('quagga')
       }
     },
     mounted: function() {
+      console.log('mounted')
       var resultCollector = Quagga.ResultCollector.create({
         capture: true, // keep track of the image producing this result
         capacity: 20,  // maximum number of results to store
@@ -36,8 +37,7 @@ var Quagga = require('quagga')
       Quagga.init({
         inputStream : {
         name : "Live",
-        type : "LiveStream",
-        target: document.querySelector('#videoElement'),
+        type : "LiveStream"
           // Or '#yourElement' (optional)
         },
         decoder : {
@@ -52,13 +52,17 @@ var Quagga = require('quagga')
                 return console.log(err);
             }
             //remove canvas for now, not built into weex for mobile
-            document.getElementById('quagga-wrapper').querySelectorAll('canvas').forEach((elm) => elm.remove())
+            document.querySelector('#quagga-wrapper canvas').remove()
             Quagga.start();
           });
       Quagga.onDetected((res)=> {
           // this.results.push({'code': res.codeResult.code, 'format': res.codeResult.format})
         this.results = resultCollector.getResults().map(result => result.codeResult)
       })
-    }
+    },
+    destroyed: function() {
+      console.log('destroyed')
+      Quagga.stop();
+    } 
   }
 </script>
