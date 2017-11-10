@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
   <template v-if="device === 'Web'">
-  <button @click="startScanner">Start Scanner</button>
-  <button @click="stopScanner">Close Scanner</button>
+  <button @click="startScanner" v-if="!showScanner">Start Scanner</button>
+  <button @click="stopScanner" v-else>Close Scanner</button>
     <div v-if="showScanner">
       <quagga></quagga>
     </div>
