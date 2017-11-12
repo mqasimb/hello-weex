@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper">
   <template v-if="device === 'Web'">
-  <button @click="startScanner" v-if="!showScanner">Start Scanner</button>
-  <button @click="stopScanner" v-else>Close Scanner</button>
+  <button class="button" @click="startScanner" v-if="!showScanner">Start Scanner</button>
+  <button class="button" @click="stopScanner" v-else>Close Scanner</button>
     <div v-if="showScanner">
       <quagga></quagga>
     </div>
   </template>
   <template v-else>
-  <button @click="scanner">Start Scanner</button>
+  <text class="button" @click="scanner">Start Scanner</text>
   <text v-if="androidScanResults">Code: {{ androidScanResults }}</text>
   </template>
   </div>
@@ -16,6 +16,19 @@
 
 <style>
 /*Coming Soon*/
+.button {
+    font-size: 36;
+    width: 200;
+    color: white;
+    text-align: center;
+    padding-top: 10;
+    padding-bottom: 10;
+    border-width: 2;
+    border-style: solid;
+    margin-right: 20;
+    background-color: #66b3ff;
+    border-color: #66b3ff;
+  }
 </style>
 
 <script>
