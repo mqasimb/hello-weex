@@ -21,5 +21,8 @@ pids
 
 # Android
 
-platforms/android
+platforms/android/build
+platforms/android/appframework/build
+platforms/android/weexplugin/build
+platforms/android/app/build
 docs
