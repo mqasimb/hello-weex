@@ -52,7 +52,7 @@ var Quagga = require('quagga')
                 return console.log(err);
             }
             //remove canvas for now, not built into weex for mobile
-            document.querySelector('#quagga-wrapper canvas').remove()
+            document.querySelector('#quagga-wrapper canvas').remove();
             Quagga.start();
           });
       Quagga.onDetected((res)=> {
@@ -62,7 +62,7 @@ var Quagga = require('quagga')
     },
     destroyed: function() {
       console.log('destroyed')
-      Quagga.stop();
+      // Quagga.stop();
     } 
   }
 </script>

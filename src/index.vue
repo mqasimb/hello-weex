@@ -8,9 +8,8 @@
     </div>
   </template>
   <template v-else>
-  <button @click="captureImage">Start Camera</button>
-  <!-- <button @click="scannertwo">Start Camera</button> -->
-  <button @click="preview">Preview Image</button>
+  <button @click="scanner">Start Scanner</button>
+  <text v-if="androidScanResults">Code: {{ androidScanResults }}</text>
   </template>
   </div>
 </template>
@@ -20,24 +19,27 @@
 </style>
 
 <script>
-import Nat from 'natjs'
-// console.log(weex)
+var Nat = require('natjs')
 var Quagga = require('../components/quagga.vue')
-// var scannernew = weex.requireModule('scan')
+var scannernew = weex.requireModule('scan')
+// console.log(weex)
   export default {
     data: function() {
       return {
         showScanner: false,
-        device: weex.config.env.platform
+        device: weex.config.env.platform,
+        androidScanResults: ''
       }
     },
     methods: {
-      // scanner: function() {
-      //   scannernew.scanCapture();
-      // },
-      // scannertwo: function() {
-      //   scannernew.scanBarcode();
-      // },
+      scanner: function() {
+        scannernew.scanCapture((results) => {
+          this.androidScanResults = results.result
+        });
+      },
+      scannertwo: function() {
+        scannernew.scanBarcode();
+      },
       startScanner: function() {
         this.showScanner = true
       },

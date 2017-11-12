@@ -20,7 +20,7 @@ pids
 *.seed
 
 # Android
-
+platforms/android/.gradle
 platforms/android/build
 platforms/android/appframework/build
 platforms/android/weexplugin/build
